@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_numabunModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryTemplateId" Type="Int32" Nullable="false" />
+    <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ParentCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="PictureId" Type="Int32" Nullable="false" />
+    <Property Name="PageSize" Type="Int32" Nullable="false" />
+    <Property Name="AllowCustomersToSelectPageSize" Type="Boolean" Nullable="false" />
+    <Property Name="PageSizeOptions" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PriceRanges" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ShowOnHomepage" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeInTopMenu" Type="Boolean" Nullable="false" />
+    <Property Name="SubjectToAcl" Type="Boolean" Nullable="false" />
+    <Property Name="LimitedToStores" Type="Boolean" Nullable="false" />
+    <Property Name="Published" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Product_Category_Mapping" Relationship="Self.FK_Product_Category_Mapping_Category_CategoryId" FromRole="Category" ToRole="Product_Category_Mapping" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MimeType" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SeoFilename" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="AltAttribute" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAttribute" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsNew" Type="Boolean" Nullable="false" />
+    <Property Name="VirtualPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PictureBinaries" Relationship="Self.FK_PictureBinary_Picture_PictureId" FromRole="Picture" ToRole="PictureBinary" />
+    <NavigationProperty Name="Product_Picture_Mapping" Relationship="Self.FK_Product_Picture_Mapping_Picture_PictureId" FromRole="Picture" ToRole="Product_Picture_Mapping" />
+  </EntityType>
+  <EntityType Name="PictureBinary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BinaryData" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PictureId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Picture" Relationship="Self.FK_PictureBinary_Picture_PictureId" FromRole="PictureBinary" ToRole="Picture" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductTypeId" Type="Int32" Nullable="false" />
+    <Property Name="ParentGroupedProductId" Type="Int32" Nullable="false" />
+    <Property Name="VisibleIndividually" Type="Boolean" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FullDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdminComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProductTemplateId" Type="Int32" Nullable="false" />
+    <Property Name="VendorId" Type="Int32" Nullable="false" />
+    <Property Name="ShowOnHomepage" Type="Boolean" Nullable="false" />
+    <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="AllowCustomerReviews" Type="Boolean" Nullable="false" />
+    <Property Name="ApprovedRatingSum" Type="Int32" Nullable="false" />
+    <Property Name="NotApprovedRatingSum" Type="Int32" Nullable="false" />
+    <Property Name="ApprovedTotalReviews" Type="Int32" Nullable="false" />
+    <Property Name="NotApprovedTotalReviews" Type="Int32" Nullable="false" />
+    <Property Name="SubjectToAcl" Type="Boolean" Nullable="false" />
+    <Property Name="LimitedToStores" Type="Boolean" Nullable="false" />
+    <Property Name="Sku" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ManufacturerPartNumber" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Gtin" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="IsGiftCard" Type="Boolean" Nullable="false" />
+    <Property Name="GiftCardTypeId" Type="Int32" Nullable="false" />
+    <Property Name="OverriddenGiftCardAmount" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="RequireOtherProducts" Type="Boolean" Nullable="false" />
+    <Property Name="RequiredProductIds" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="AutomaticallyAddRequiredProducts" Type="Boolean" Nullable="false" />
+    <Property Name="IsDownload" Type="Boolean" Nullable="false" />
+    <Property Name="DownloadId" Type="Int32" Nullable="false" />
+    <Property Name="UnlimitedDownloads" Type="Boolean" Nullable="false" />
+    <Property Name="MaxNumberOfDownloads" Type="Int32" Nullable="false" />
+    <Property Name="DownloadExpirationDays" Type="Int32" />
+    <Property Name="DownloadActivationTypeId" Type="Int32" Nullable="false" />
+    <Property Name="HasSampleDownload" Type="Boolean" Nullable="false" />
+    <Property Name="SampleDownloadId" Type="Int32" Nullable="false" />
+    <Property Name="HasUserAgreement" Type="Boolean" Nullable="false" />
+    <Property Name="UserAgreementText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsRecurring" Type="Boolean" Nullable="false" />
+    <Property Name="RecurringCycleLength" Type="Int32" Nullable="false" />
+    <Property Name="RecurringCyclePeriodId" Type="Int32" Nullable="false" />
+    <Property Name="RecurringTotalCycles" Type="Int32" Nullable="false" />
+    <Property Name="IsRental" Type="Boolean" Nullable="false" />
+    <Property Name="RentalPriceLength" Type="Int32" Nullable="false" />
+    <Property Name="RentalPricePeriodId" Type="Int32" Nullable="false" />
+    <Property Name="IsShipEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="IsFreeShipping" Type="Boolean" Nullable="false" />
+    <Property Name="ShipSeparately" Type="Boolean" Nullable="false" />
+    <Property Name="AdditionalShippingCharge" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="DeliveryDateId" Type="Int32" Nullable="false" />
+    <Property Name="IsTaxExempt" Type="Boolean" Nullable="false" />
+    <Property Name="TaxCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="IsTelecommunicationsOrBroadcastingOrElectronicServices" Type="Boolean" Nullable="false" />
+    <Property Name="ManageInventoryMethodId" Type="Int32" Nullable="false" />
+    <Property Name="ProductAvailabilityRangeId" Type="Int32" Nullable="false" />
+    <Property Name="UseMultipleWarehouses" Type="Boolean" Nullable="false" />
+    <Property Name="WarehouseId" Type="Int32" Nullable="false" />
+    <Property Name="StockQuantity" Type="Int32" Nullable="false" />
+    <Property Name="DisplayStockAvailability" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayStockQuantity" Type="Boolean" Nullable="false" />
+    <Property Name="MinStockQuantity" Type="Int32" Nullable="false" />
+    <Property Name="LowStockActivityId" Type="Int32" Nullable="false" />
+    <Property Name="NotifyAdminForQuantityBelow" Type="Int32" Nullable="false" />
+    <Property Name="BackorderModeId" Type="Int32" Nullable="false" />
+    <Property Name="AllowBackInStockSubscriptions" Type="Boolean" Nullable="false" />
+    <Property Name="OrderMinimumQuantity" Type="Int32" Nullable="false" />
+    <Property Name="OrderMaximumQuantity" Type="Int32" Nullable="false" />
+    <Property Name="AllowedQuantities" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="AllowAddingOnlyExistingAttributeCombinations" Type="Boolean" Nullable="false" />
+    <Property Name="NotReturnable" Type="Boolean" Nullable="false" />
+    <Property Name="DisableBuyButton" Type="Boolean" Nullable="false" />
+    <Property Name="DisableWishlistButton" Type="Boolean" Nullable="false" />
+    <Property Name="AvailableForPreOrder" Type="Boolean" Nullable="false" />
+    <Property Name="PreOrderAvailabilityStartDateTimeUtc" Type="DateTime" Precision="7" />
+    <Property Name="CallForPrice" Type="Boolean" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="OldPrice" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="ProductCost" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="CustomerEntersPrice" Type="Boolean" Nullable="false" />
+    <Property Name="MinimumCustomerEnteredPrice" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="MaximumCustomerEnteredPrice" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="BasepriceEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="BasepriceAmount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="BasepriceUnitId" Type="Int32" Nullable="false" />
+    <Property Name="BasepriceBaseAmount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="BasepriceBaseUnitId" Type="Int32" Nullable="false" />
+    <Property Name="MarkAsNew" Type="Boolean" Nullable="false" />
+    <Property Name="MarkAsNewStartDateTimeUtc" Type="DateTime" Precision="7" />
+    <Property Name="MarkAsNewEndDateTimeUtc" Type="DateTime" Precision="7" />
+    <Property Name="HasTierPrices" Type="Boolean" Nullable="false" />
+    <Property Name="HasDiscountsApplied" Type="Boolean" Nullable="false" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Length" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Width" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Height" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="AvailableStartDateTimeUtc" Type="DateTime" Precision="7" />
+    <Property Name="AvailableEndDateTimeUtc" Type="DateTime" Precision="7" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="Published" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Product_Category_Mapping" Relationship="Self.FK_Product_Category_Mapping_Product_ProductId" FromRole="Product" ToRole="Product_Category_Mapping" />
+    <NavigationProperty Name="Product_Manufacturer_Mapping" Relationship="Self.FK_Product_Manufacturer_Mapping_Product_ProductId" FromRole="Product" ToRole="Product_Manufacturer_Mapping" />
+    <NavigationProperty Name="Product_Picture_Mapping" Relationship="Self.FK_Product_Picture_Mapping_Product_ProductId" FromRole="Product" ToRole="Product_Picture_Mapping" />
+    <NavigationProperty Name="ShoppingCartItems" Relationship="Self.FK_ShoppingCartItem_Product_ProductId" FromRole="Product" ToRole="ShoppingCartItem" />
+  </EntityType>
+  <EntityType Name="Product_Category_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="IsFeaturedProduct" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category_Mapping_Category_CategoryId" FromRole="Product_Category_Mapping" ToRole="Category" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Category_Mapping_Product_ProductId" FromRole="Product_Category_Mapping" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product_Manufacturer_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
+    <Property Name="IsFeaturedProduct" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Manufacturer_Mapping_Product_ProductId" FromRole="Product_Manufacturer_Mapping" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product_Picture_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="PictureId" Type="Int32" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Picture" Relationship="Self.FK_Product_Picture_Mapping_Picture_PictureId" FromRole="Product_Picture_Mapping" ToRole="Picture" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Picture_Mapping_Product_ProductId" FromRole="Product_Picture_Mapping" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ShoppingCartItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreId" Type="Int32" Nullable="false" />
+    <Property Name="ShoppingCartTypeId" Type="Int32" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="AttributesXml" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerEnteredPrice" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="RentalStartDateUtc" Type="DateTime" Precision="7" />
+    <Property Name="RentalEndDateUtc" Type="DateTime" Precision="7" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_ShoppingCartItem_Product_ProductId" FromRole="ShoppingCartItem" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="SO_Sales">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="STATION_ID" Type="Int32" />
+    <Property Name="TRANSACTION_ID" Type="Int32" />
+    <Property Name="TRANSACTION_DATE" Type="DateTime" Precision="0" />
+    <Property Name="TOTAL_VAT" Type="Int32" />
+    <Property Name="TOTAL_ORDER" Type="Double" />
+    <Property Name="DISCOUNT" Type="Double" />
+    <Property Name="TOTAL_FINAL" Type="Double" />
+    <Property Name="PAYMENT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="PAYMENT_ID" Type="Int32" />
+    <Property Name="STATUS_ORDER" Type="Int32" />
+    <Property Name="INFO_ORDER" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Product_Category_Mapping_Category_CategoryId">
+    <End Role="Category" Type="Self.Category" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_Category_Mapping" Type="Self.Product_Category_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Category_Mapping">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PictureBinary_Picture_PictureId">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PictureBinary" Type="Self.PictureBinary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PictureBinary">
+        <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Picture_Mapping_Picture_PictureId">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_Picture_Mapping" Type="Self.Product_Picture_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Picture_Mapping">
+        <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category_Mapping_Product_ProductId">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_Category_Mapping" Type="Self.Product_Category_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Category_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Manufacturer_Mapping_Product_ProductId">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_Manufacturer_Mapping" Type="Self.Product_Manufacturer_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Manufacturer_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Picture_Mapping_Product_ProductId">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_Picture_Mapping" Type="Self.Product_Picture_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Picture_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShoppingCartItem_Product_ProductId">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ShoppingCartItem" Type="Self.ShoppingCartItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShoppingCartItem">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_numabunEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Pictures" EntityType="Self.Picture" />
+    <EntitySet Name="PictureBinaries" EntityType="Self.PictureBinary" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Product_Category_Mapping" EntityType="Self.Product_Category_Mapping" />
+    <EntitySet Name="Product_Manufacturer_Mapping" EntityType="Self.Product_Manufacturer_Mapping" />
+    <EntitySet Name="Product_Picture_Mapping" EntityType="Self.Product_Picture_Mapping" />
+    <EntitySet Name="ShoppingCartItems" EntityType="Self.ShoppingCartItem" />
+    <EntitySet Name="SO_Sales" EntityType="Self.SO_Sales" />
+    <AssociationSet Name="FK_Product_Category_Mapping_Category_CategoryId" Association="Self.FK_Product_Category_Mapping_Category_CategoryId">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product_Category_Mapping" EntitySet="Product_Category_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PictureBinary_Picture_PictureId" Association="Self.FK_PictureBinary_Picture_PictureId">
+      <End Role="Picture" EntitySet="Pictures" />
+      <End Role="PictureBinary" EntitySet="PictureBinaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Picture_Mapping_Picture_PictureId" Association="Self.FK_Product_Picture_Mapping_Picture_PictureId">
+      <End Role="Picture" EntitySet="Pictures" />
+      <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category_Mapping_Product_ProductId" Association="Self.FK_Product_Category_Mapping_Product_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Category_Mapping" EntitySet="Product_Category_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Manufacturer_Mapping_Product_ProductId" Association="Self.FK_Product_Manufacturer_Mapping_Product_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Manufacturer_Mapping" EntitySet="Product_Manufacturer_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Picture_Mapping_Product_ProductId" Association="Self.FK_Product_Picture_Mapping_Product_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShoppingCartItem_Product_ProductId" Association="Self.FK_ShoppingCartItem_Product_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ShoppingCartItem" EntitySet="ShoppingCartItems" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

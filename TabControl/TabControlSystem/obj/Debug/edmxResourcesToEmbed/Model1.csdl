@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_numabunModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryTemplateId" Type="Int32" Nullable="false" />
+    <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ParentCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="PictureId" Type="Int32" Nullable="false" />
+    <Property Name="PageSize" Type="Int32" Nullable="false" />
+    <Property Name="AllowCustomersToSelectPageSize" Type="Boolean" Nullable="false" />
+    <Property Name="PageSizeOptions" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PriceRanges" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ShowOnHomepage" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeInTopMenu" Type="Boolean" Nullable="false" />
+    <Property Name="SubjectToAcl" Type="Boolean" Nullable="false" />
+    <Property Name="LimitedToStores" Type="Boolean" Nullable="false" />
+    <Property Name="Published" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="7" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MimeType" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SeoFilename" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="AltAttribute" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TitleAttribute" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsNew" Type="Boolean" Nullable="false" />
+    <Property Name="VirtualPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="db_numabunEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Pictures" EntityType="Self.Picture" />
+  </EntityContainer>
+</Schema>

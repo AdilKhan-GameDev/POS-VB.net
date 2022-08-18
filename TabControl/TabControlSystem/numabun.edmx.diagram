@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ee872b5dff84d2cab345de8b1b331ca" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="db_numabunModel.Category" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_numabunModel.Picture" Width="1.5" PointX="2.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_numabunModel.PictureBinary" Width="1.5" PointX="4.875" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_numabunModel.Product" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_numabunModel.Product_Category_Mapping" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_numabunModel.Product_Manufacturer_Mapping" Width="1.5" PointX="2.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_numabunModel.Product_Picture_Mapping" Width="1.5" PointX="2.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_numabunModel.ShoppingCartItem" Width="1.5" PointX="2.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_numabunModel.SO_Sales" Width="1.5" PointX="4.75" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="db_numabunModel.FK_Product_Category_Mapping_Category_CategoryId" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="db_numabunModel.FK_PictureBinary_Picture_PictureId" ManuallyRouted="false" />
+        <AssociationConnector Association="db_numabunModel.FK_Product_Picture_Mapping_Picture_PictureId" ManuallyRouted="false" />
+        <AssociationConnector Association="db_numabunModel.FK_Product_Category_Mapping_Product_ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="db_numabunModel.FK_Product_Manufacturer_Mapping_Product_ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="db_numabunModel.FK_Product_Picture_Mapping_Product_ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="db_numabunModel.FK_ShoppingCartItem_Product_ProductId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

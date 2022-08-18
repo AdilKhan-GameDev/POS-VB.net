@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_numabunModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CategoryTemplateId" Type="int" Nullable="false" />
+    <Property Name="MetaKeywords" Type="nvarchar" MaxLength="400" />
+    <Property Name="MetaDescription" Type="nvarchar(max)" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="400" />
+    <Property Name="ParentCategoryId" Type="int" Nullable="false" />
+    <Property Name="PictureId" Type="int" Nullable="false" />
+    <Property Name="PageSize" Type="int" Nullable="false" />
+    <Property Name="AllowCustomersToSelectPageSize" Type="bit" Nullable="false" />
+    <Property Name="PageSizeOptions" Type="nvarchar" MaxLength="200" />
+    <Property Name="PriceRanges" Type="nvarchar" MaxLength="400" />
+    <Property Name="ShowOnHomepage" Type="bit" Nullable="false" />
+    <Property Name="IncludeInTopMenu" Type="bit" Nullable="false" />
+    <Property Name="SubjectToAcl" Type="bit" Nullable="false" />
+    <Property Name="LimitedToStores" Type="bit" Nullable="false" />
+    <Property Name="Published" Type="bit" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedOnUtc" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MimeType" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="SeoFilename" Type="nvarchar" MaxLength="300" />
+    <Property Name="AltAttribute" Type="nvarchar(max)" />
+    <Property Name="TitleAttribute" Type="nvarchar(max)" />
+    <Property Name="IsNew" Type="bit" Nullable="false" />
+    <Property Name="VirtualPath" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="db_numabunModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="numabun" store:Type="Tables" />
+    <EntitySet Name="Picture" EntityType="Self.Picture" Schema="numabun" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

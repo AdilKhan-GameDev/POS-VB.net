@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_numabunModelStoreContainer" CdmEntityContainer="db_numabunEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="db_numabunModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CategoryTemplateId" ColumnName="CategoryTemplateId" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+          <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+          <ScalarProperty Name="AllowCustomersToSelectPageSize" ColumnName="AllowCustomersToSelectPageSize" />
+          <ScalarProperty Name="PageSizeOptions" ColumnName="PageSizeOptions" />
+          <ScalarProperty Name="PriceRanges" ColumnName="PriceRanges" />
+          <ScalarProperty Name="ShowOnHomepage" ColumnName="ShowOnHomepage" />
+          <ScalarProperty Name="IncludeInTopMenu" ColumnName="IncludeInTopMenu" />
+          <ScalarProperty Name="SubjectToAcl" ColumnName="SubjectToAcl" />
+          <ScalarProperty Name="LimitedToStores" ColumnName="LimitedToStores" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="db_numabunModel.Picture">
+        <MappingFragment StoreEntitySet="Picture">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+          <ScalarProperty Name="SeoFilename" ColumnName="SeoFilename" />
+          <ScalarProperty Name="AltAttribute" ColumnName="AltAttribute" />
+          <ScalarProperty Name="TitleAttribute" ColumnName="TitleAttribute" />
+          <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+          <ScalarProperty Name="VirtualPath" ColumnName="VirtualPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
